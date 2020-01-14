@@ -1,0 +1,24 @@
+.stick-social-icons{
+  position: fixed;
+  margin-top: 0px;
+  left: 2%;
+}
+@media (max-width: 800px) {
+  .stick-social-icons{
+    left: 1%;
+  }
+}
+
+@media (max-width: 600px) {
+  .stick-social-icons{
+    position: relative;
+    flex-direction: inherit;
+    display: flex;
+    left: 0px;
+    padding-top: 10px;
+
+  }
+}
+//@media screen and (max-width: 600px) and (min-width: 600px)  {
+//
+//}

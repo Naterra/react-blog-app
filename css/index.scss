@@ -1,0 +1,478 @@
+@charset "UTF-8";
+$ionicons-font-path: '/fonts/ionicons' !default;
+$ionicons-font-family: 'Ionicons' !default;
+$ionicons-version: '3.0.0-alpha.3' !default;
+@import '../node_modules/ionicons/dist/scss/ionicons';
+
+
+@import 'layout';
+@import 'stick-social-icons';
+@import 'sidenav';
+@import 'form';
+@import 'show-more-content';
+@import '../components/searchBox/searchBox';
+@import '../components/DropZoneUploader/DropZone';
+@import '../components/Materialize/Parallax/parallax';
+@import '../components/Materialize/Tabs/Tabs';
+@import '../components/Forms/reduxFields/CKEditor/ckEditor';
+
+$color-light-blue: #5c8fad;
+
+.light-blue.darken-4{
+	background: #5c8fad
+}
+.mainPage .searchBox{
+	position: absolute;
+	top: 300px;
+}
+
+.redLine::first-letter{
+	margin-left: 15px;
+}
+
+
+
+.bubble-layout{
+	background: url('/static/images/bg-bubbles.svg');
+	//background-size: 1155px auto;
+	//background-position: center 445px;
+	background-position: top;
+	//background-size: cover;
+	background-size: 125% ;
+}
+
+.account-page{
+	background-color: #f5f5f5;
+}
+.mcard{
+	background: #fff;
+	padding: 5px;
+	margin: 10px 0;
+	border: 1px solid #e8e8e8;
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: none;
+
+	h2{
+		font-size: 26px;
+		margin-top: 5px;
+		margin-left: 10px;
+	}
+	.mcard-title{
+		color: #68829a;
+		font-size: 17px;
+	}
+  .row{
+    margin-bottom: 10px;
+  }
+}
+
+.full-width{
+	margin: 0 -2.5%;
+	padding: 5px 2.5%;
+}
+.sand-bg{
+	background: #f9f8f3;
+}
+
+.background-img{
+	background-size: cover;
+	background-position: center;
+}
+
+
+
+
+h1,h2,h3,h4,h5{
+	color: #68829a;
+}
+
+h1 {font-size: 2.5rem;	margin-top: 20px;}
+h2 {font-size: 2rem;}
+h3 {font-size: 1.8rem;}
+h4 {font-size: 1.3rem; }
+h5 {font-size: 1.1rem;}
+
+.ul-horizontal{
+	li{
+		float:left;
+		margin-right: 10px;
+	}
+}
+
+table{
+	color:#68829a;
+
+	thead{
+		color: #516475;
+	}
+	.table-actions{
+		i{
+			font-size: 15px;
+		}
+	}
+
+	&.highlight{
+		tbody{
+			tr:hover{
+				background-color: #effced;
+			}
+		}
+	}
+}
+
+
+
+.fixed_container {
+	width: 95%;
+	margin: 0 auto;
+	max-width: 1280px;
+}
+
+.user-sidebar {
+	min-height: calc(100vh - 70px) !important;
+	padding: 0 !important;
+}
+
+.breadcrumbs {
+	margin-bottom: 15px;
+}
+
+
+.BlueTabMenu{
+	.tab-menu{
+		background: #f7f7f7;
+	}
+	ul.tabs{
+		background: #f7f7f7;
+	}
+}
+
+
+
+#dropdownaccount{
+	width: 175px!important;
+
+	span{
+		margin-right:3px;
+	}
+}
+.modal{
+	background-color: #fff;
+}
+
+
+
+.page-content-relative{
+	position:relative;
+}
+
+.page-content {
+	background: #fff;
+	min-height: 100%;
+	margin-top: 10px;
+    overflow: auto;
+    padding: 0 1rem;
+
+  h3,h2,h1{
+    margin-top: 1rem;
+  }
+
+}
+
+.image-style-align-left{
+	float:left;
+}
+
+.tabs-mapTool{
+	//div[id^="tab-"] {
+	//}
+	.tab-content{
+		background: #597f92a8;
+		padding: 0 5px 0px;
+		color: #fff;
+		font-size: 12px;
+	}
+}
+
+table.infoblock{
+	tr, th{
+		padding: 10px 5px;
+	}
+}
+
+.mapTool{
+	.infoblock{
+		padding: 0 0 5px 0;
+		border-bottom: 1px solid #71838c;
+		margin-bottom: 10px;
+	}
+}
+
+ul#mapTool{
+	background-color: #597f92;
+
+	a{
+		color:#fff;
+	}
+}
+
+.user-avatar-block {
+	.user-avatar-bigImg {
+		position: relative;
+		background: url('/static/images/profile_background.png');
+		height: 85px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		margin: -5px -5px 0px -5px;
+	}
+	.user-avatar-wrapper {
+		padding: 0 5px;
+	}
+	.user-avatar-img {
+		top: 43px;
+		position: absolute;
+		width: 70px;
+		height: 70px;
+		left: 5px;
+		display: inline-block;
+
+
+		img{
+			height: 100%;
+			border: 1px solid #95bbde;
+		}
+	}
+
+	.user-name {
+		line-height: 18px;
+		vertical-align: middle;
+		margin-left: 10px;
+		font-size: 16px;
+		color:#68829a;
+		margin-top: 10px;
+	}
+}
+
+.user-list{
+	font-size: 12px;
+	color:#68829a;
+
+	.user-list-email{
+	}
+}
+.lead {
+	font-size: 1.4em;
+}
+
+
+
+
+
+.navbar,
+.navbar .btn,
+.navbar .dropdown-item,
+.navbar button {
+	font-size: 18px;
+}
+
+.navbar {
+	border-bottom: 1px solid #ddd;
+}
+
+
+@media (max-width: 768px) {
+	.display-2 {
+		font-size: 3em;
+	}
+	.display-3 {
+		font-size: 2.5em;
+	}
+	.display-4 {
+		font-size: 2em;
+	}
+}
+
+.icon-spin {
+	display: inline-block;
+	animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(359deg);
+	}
+}
+
+/**
+ * This is a fix for Reactstrap 5.0.0-alpha.4 not displaying menus in the 
+ * navbar correcrtly on mobile devices.
+ **/
+.navbar .dropdown {
+	display: block;
+}
+
+
+
+@media (max-width: 768px) {
+	.navbar .dropdown-menu {
+		position: relative !important;
+		display: block !important;
+		transform: none !important;
+		padding: 0 0 10px 0;
+		border: none;
+	}
+}
+
+
+.with-sidebar {
+	padding-left: 300px;
+}
+
+
+
+nav {
+	&.top-navbar {
+		&.front-page {
+			background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 95%);
+			position: absolute;
+			box-shadow: none;
+			line-height: 40px;
+			z-index: 99999;
+
+			.navbar-links {
+				text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+			}
+		}
+
+		.navbar-links {
+			text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+			li a{
+				//color:#fff;
+			}
+		}
+	}
+
+	.nav-wrapper {
+		i {
+			line-height: inherit;
+		}
+	}
+}
+
+.banner {
+	width: 100%;
+	z-index: 1000;
+
+	h1 {
+		text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+		text-align: center;
+		color: #fff;
+		font-size: 2rem;
+		font-weight: 400;
+	}
+}
+
+
+.postfix {
+	position: absolute;
+	height: 100%;
+}
+
+.set-card{
+	border-bottom: 2px solid #77c79d;
+	margin-bottom: 20px;
+}
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.equal-col {
+	display: flex;
+	flex-wrap: wrap;
+
+	.col{
+		margin-left:0px!important;
+		height: 280px;
+		position: relative;
+		background: #eee;
+	}
+}
+
+.bottom-column {
+	float: none;
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+
+
+.fixed-action-btn {
+	&.direction-left {
+		ul {
+			right: 50px;
+		}
+	}
+	&.direction-right {
+		ul {
+			right: 50px;
+		}
+	}
+	.btn-floating {
+		&.btn-small {
+			line-height: 29.4px;
+		}
+	}
+}
+
+/******************** brand-logo ******************/
+.brand-logo {
+	img {
+		height: 45px;
+		margin-top: 8px;
+	}
+}
+
+@media only screen and (min-width: 601px){
+	nav .brand-logo{
+		img{ margin-top: 8px; height: 50px; }
+	}
+}
+
+/******************** brand-logo end ******************/
+
+
+
+.autocomplete-content li img {
+	display: none;
+}
+
+//Large Screen
+@media only screen and (min-width: 992px) {
+	.show-on-medium-and-down {
+		display: none;
+	}
+}
+
+//Mid and Small Screen
+@media only screen and (max-width: 992px) {
+	main {
+		&.with-sidebar {
+			padding-left: 0px;
+		}
+	}
+}
+
+//.reviews{
+//	.review-item{
+//		border-bottom:1px solid #eee;
+//	}
+//	.review-item:last-child{
+//		border:none;
+//	}
+//}

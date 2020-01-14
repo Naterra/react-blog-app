@@ -1,0 +1,50 @@
+.DropZoneUploader{
+
+  .thumbsContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 16px;
+
+    .tumbs{
+      display: block;
+      width: auto;
+      height:100%;
+    }
+    .thumbInner{
+      display: flex;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .thumb  {
+      display: inline-flex;
+      border-radius: 2px;
+      border:  1px solid #eaeaea;
+      margin-bottom: 8px;
+      margin-right: 8px;
+      width: 100px;
+      height: 100px;
+      padding: 4px;
+      box-sizing: border-box;
+      min-width: 100px;
+    };
+  }
+
+  .container2{
+    display: flex;
+    flex: 1;
+    color: #bdbdbd;
+    outline: none;
+    border: 2px dashed #eeeeee;
+    border-radius:2px;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+    background-color:#fafafa;
+    transition:border .24s ease-in-out;
+
+
+
+  }
+}

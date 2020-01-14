@@ -1,0 +1,87 @@
+html, body {}
+#__next {}
+
+
+$color-light-blue: #5c8fad;
+
+main {
+  min-height: calc(100vh - 137px);
+
+  //&.with-sidebar {
+  //	padding-left: 300px;
+  //
+  //	.container {
+  //		width: 100%;
+  //		padding: 15px;
+  //	}
+  //}
+}
+
+nav{
+  background-color: $color-light-blue;
+}
+
+footer {
+  background-color: $color-light-blue;
+  font-size: 13px;
+  margin-bottom: 0px!important;
+  min-height: 93px;
+
+  h5 {
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+
+    .small {
+      text-transform: capitalize;
+      font-size: 11px;
+    }
+  }
+
+  a {
+    color: #fff;
+  }
+  ul {
+    margin-top: 0;
+  }
+}
+
+.admin-left-sidebar{
+  background: #597f92;
+  height: calc(100vh - 137px);
+  padding: 0;
+  margin-bottom: -20px;
+
+  a{ color:#fff; }
+  ul{
+    border:none!important;
+    box-shadow: none;
+
+    li{
+      a{ display: -webkit-flex; }
+    }
+  }
+  .title{ flex: 1 1 auto; }
+  i.right{
+    float:right;
+  }
+  .collapsible{
+    .collapsible-header{
+      padding: 10px;
+      background:none!important;
+      color: #fff;
+      border-bottom: none;
+    }
+    .collapsible-body{
+      padding: 0rem 0 0 4rem;
+    }
+  }
+
+  .collection{
+    border:none;
+
+    .collection-item{
+      background:none!important;
+    }
+  }
+}

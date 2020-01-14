@@ -1,0 +1,144 @@
+@import '../../../../common-scss/_variables.scss';
+
+@mixin inputNumber() {
+
+  .input-number-container {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  input[type='number'] {
+    width: 60px;
+    text-align: right;
+    margin-bottom: 0px;
+  }
+}
+
+@mixin inputNumberLabel($isRequired: false) {
+  display: flex;
+  padding-top: 8px;
+
+  label {
+    align-self: center;
+    margin-right: auto;
+    padding: 0 6px;
+    color: if($isRequired, $error-red, $color-blue);
+    font-weight: 700;
+  }
+
+  input[type='number'] {
+    width: 44px;
+    margin-left: auto;
+    margin-bottom: 0px;
+    padding: 6px;
+    text-align: right;
+  }
+}
+
+.input-number {
+  @include inputStyles();
+  @include inputNumber();
+}
+
+.input-number-required {
+  @include inputStyles(true);
+  @include inputNumber();
+}
+
+.input-number-label {
+  @include inputStyles();
+  @include inputNumberLabel();
+}
+
+.input-number-label-required {
+  @include inputStyles(true);
+  @include inputNumberLabel(true);
+}
+
+//----------------------------------------------------------------------//
+//                             Number Counters                          //
+//----------------------------------------------------------------------//
+@mixin includeShapes($isRequired: false) {
+
+  @if $isRequired {
+    border: 2px solid $error-red;
+    color: $error-red;
+
+    &::before, &::after {
+      background: $error-red;
+    }
+
+    &:hover {
+      background: $error-red;
+    }
+  }
+
+  @else {
+    border: 2px solid $color-blue-dark;
+    color: $color-blue-dark;
+
+    &::before, &::after {
+      background: $color-blue-dark;
+    }
+
+    &:hover {
+      background: $color-blue-dark;
+    }
+  }
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 2px;
+    width: 10px;
+    height: 2px;
+  }
+
+  &::after {
+    top: 2px;
+    left: 6px;
+    width: 2px;
+    height: 10px;
+  }
+
+  &:hover {
+
+    &::before, &::after {
+      background: $color-white;
+    }
+  }
+}
+
+@mixin numberCounters($isRequired: false) {
+  display: inline-block;
+  position: relative;
+  align-self: center;
+  height: 18px;
+  padding-left: 6px;
+
+  .number-plus, .number-minus {
+    display: inline-block;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    margin: 0 0 0 6px;
+    border-radius: 50%;
+    text-indent: -9999px;
+    cursor: pointer;
+    @include includeShapes($isRequired);
+  }
+
+  .number-minus::after {
+    display: none;
+  }
+}
+
+.number-counter {
+  @include numberCounters();
+}
+
+.input-number-required .number-counter,
+.input-number-label-required .number-counter {
+  @include numberCounters(true);
+}

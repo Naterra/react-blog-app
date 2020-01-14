@@ -1,0 +1,22 @@
+.show-more-text{
+  position: relative;
+
+  .content{
+    transition:height 0.5s ease;
+    height:50px;
+    width: 100%;
+    overflow: hidden;
+  }
+.helper{
+  //background-color: rgba(255,255,255,0.5);
+  //position: absolute;
+  //margin-top:-30px;
+  //height:30px;
+  //width:100%;
+  //overflow:scroll;
+  //background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.57) 40%, rgba(255,255,255,1) 70%);
+  //background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0.57) 40%,rgba(255,255,255,1) 70%);
+  //background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.57) 40%,rgba(255,255,255,1) 70%);
+  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+}
+}

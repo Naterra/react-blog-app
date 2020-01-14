@@ -1,0 +1,18 @@
+.sidenav{
+
+
+  ul:not(.browser-default) {
+    //margin-left: 10px;
+
+    .sub-menu{
+      background: rgba(38,166,154,0.26);
+
+      li{
+        padding-left: 20px;
+        border-bottom: 1px solid #afd0cd;
+      }
+    }
+  }
+
+
+}

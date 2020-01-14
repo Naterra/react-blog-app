@@ -1,0 +1,53 @@
+
+form{
+  margin: 30px 0;
+  display: initial;
+  width: 100%;
+
+  input{
+    color: #576f86;
+  }
+
+  .input-field{
+    margin-bottom:1.2rem;
+
+  .select-wrapper{
+    color: #68829a;
+  }
+  .select-wrapper+label{
+      font-size: 13px;
+  }
+
+  label {
+      top: 2px;
+    }
+  }
+}
+
+input{
+
+}
+
+textarea.materialize-textarea {
+  min-height: 6rem;
+  background: #fff;
+  max-height: 236px;
+  overflow: scroll;
+  border:1px solid #eee;
+}
+
+.form-field-error{
+  margin-top: -8px;
+  height: 30px;
+
+  .field-error{
+    color:red;
+    font-size: 11px;
+  }
+  .field-warn{
+    color:yellow;
+    font-size: 11px;
+  }
+}
+
+

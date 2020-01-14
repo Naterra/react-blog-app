@@ -1,0 +1,280 @@
+@keyframes slideUp {
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1; } }
+
+.input-number {
+  position: relative;
+  margin-bottom: 6px; }
+  .input-number input, .input-number select, .input-number textarea {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 35px 8px 12px;
+    overflow: hidden;
+    border: 2px solid;
+    border-radius: 3px;
+    outline: none;
+    background: #f1f1f1;
+    color: #2f3950;
+    font-family: "MuseoSans";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    vertical-align: top;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-color: #f1f1f1; }
+    .input-number input::placeholder, .input-number select::placeholder, .input-number textarea::placeholder {
+      color: #bfbfbf; }
+    .input-number input:focus, .input-number select:focus, .input-number textarea:focus {
+      border-color: #01a14c; }
+    .input-number input::placeholder, .input-number select::placeholder, .input-number textarea::placeholder {
+      transition: transform 0.6s ease, opacity 0.6s ease; }
+    .input-number input:focus::placeholder, .input-number select:focus::placeholder, .input-number textarea:focus::placeholder {
+      transform: translateX(-100%);
+      transition-duration: 1.2s;
+      opacity: 0; }
+  .input-number .input-number-container {
+    display: flex;
+    justify-content: flex-start; }
+  .input-number input[type='number'] {
+    width: 60px;
+    text-align: right;
+    margin-bottom: 0px; }
+
+.input-number-required {
+  position: relative;
+  margin-bottom: 6px; }
+  .input-number-required input, .input-number-required select, .input-number-required textarea {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 35px 8px 12px;
+    overflow: hidden;
+    border: 2px solid;
+    border-radius: 3px;
+    outline: none;
+    background: #f1f1f1;
+    color: #2f3950;
+    font-family: "MuseoSans";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    vertical-align: top;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-color: #ce5050;
+    color: #ce5050; }
+    .input-number-required input::placeholder, .input-number-required select::placeholder, .input-number-required textarea::placeholder {
+      color: #ce5050; }
+    .input-number-required input:focus, .input-number-required select:focus, .input-number-required textarea:focus {
+      border-color: #ce5050; }
+    .input-number-required input::placeholder, .input-number-required select::placeholder, .input-number-required textarea::placeholder {
+      transition: transform 0.6s ease, opacity 0.6s ease; }
+    .input-number-required input:focus::placeholder, .input-number-required select:focus::placeholder, .input-number-required textarea:focus::placeholder {
+      transform: translateX(-100%);
+      transition-duration: 1.2s;
+      opacity: 0; }
+  .input-number-required .input-number-container {
+    display: flex;
+    justify-content: flex-start; }
+  .input-number-required input[type='number'] {
+    width: 60px;
+    text-align: right;
+    margin-bottom: 0px; }
+
+.input-number-label {
+  position: relative;
+  margin-bottom: 6px;
+  display: flex;
+  padding-top: 8px; }
+  .input-number-label input, .input-number-label select, .input-number-label textarea {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 35px 8px 12px;
+    overflow: hidden;
+    border: 2px solid;
+    border-radius: 3px;
+    outline: none;
+    background: #f1f1f1;
+    color: #2f3950;
+    font-family: "MuseoSans";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    vertical-align: top;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-color: #f1f1f1; }
+    .input-number-label input::placeholder, .input-number-label select::placeholder, .input-number-label textarea::placeholder {
+      color: #bfbfbf; }
+    .input-number-label input:focus, .input-number-label select:focus, .input-number-label textarea:focus {
+      border-color: #01a14c; }
+    .input-number-label input::placeholder, .input-number-label select::placeholder, .input-number-label textarea::placeholder {
+      transition: transform 0.6s ease, opacity 0.6s ease; }
+    .input-number-label input:focus::placeholder, .input-number-label select:focus::placeholder, .input-number-label textarea:focus::placeholder {
+      transform: translateX(-100%);
+      transition-duration: 1.2s;
+      opacity: 0; }
+  .input-number-label label {
+    align-self: center;
+    margin-right: auto;
+    padding: 0 6px;
+    color: #005199;
+    font-weight: 700; }
+  .input-number-label input[type='number'] {
+    width: 44px;
+    margin-left: auto;
+    margin-bottom: 0px;
+    padding: 6px;
+    text-align: right; }
+
+.input-number-label-required {
+  position: relative;
+  margin-bottom: 6px;
+  display: flex;
+  padding-top: 8px; }
+  .input-number-label-required input, .input-number-label-required select, .input-number-label-required textarea {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 35px 8px 12px;
+    overflow: hidden;
+    border: 2px solid;
+    border-radius: 3px;
+    outline: none;
+    background: #f1f1f1;
+    color: #2f3950;
+    font-family: "MuseoSans";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    vertical-align: top;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-color: #ce5050;
+    color: #ce5050; }
+    .input-number-label-required input::placeholder, .input-number-label-required select::placeholder, .input-number-label-required textarea::placeholder {
+      color: #ce5050; }
+    .input-number-label-required input:focus, .input-number-label-required select:focus, .input-number-label-required textarea:focus {
+      border-color: #ce5050; }
+    .input-number-label-required input::placeholder, .input-number-label-required select::placeholder, .input-number-label-required textarea::placeholder {
+      transition: transform 0.6s ease, opacity 0.6s ease; }
+    .input-number-label-required input:focus::placeholder, .input-number-label-required select:focus::placeholder, .input-number-label-required textarea:focus::placeholder {
+      transform: translateX(-100%);
+      transition-duration: 1.2s;
+      opacity: 0; }
+  .input-number-label-required label {
+    align-self: center;
+    margin-right: auto;
+    padding: 0 6px;
+    color: #ce5050;
+    font-weight: 700; }
+  .input-number-label-required input[type='number'] {
+    width: 44px;
+    margin-left: auto;
+    margin-bottom: 0px;
+    padding: 6px;
+    text-align: right; }
+
+.number-counter {
+  display: inline-block;
+  position: relative;
+  align-self: center;
+  height: 18px;
+  padding-left: 6px; }
+  .number-counter .number-plus, .number-counter .number-minus {
+    display: inline-block;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    margin: 0 0 0 6px;
+    border-radius: 50%;
+    text-indent: -9999px;
+    cursor: pointer;
+    border: 2px solid #2f3950;
+    color: #2f3950; }
+    .number-counter .number-plus::before, .number-counter .number-plus::after, .number-counter .number-minus::before, .number-counter .number-minus::after {
+      background: #2f3950; }
+    .number-counter .number-plus:hover, .number-counter .number-minus:hover {
+      background: #2f3950; }
+    .number-counter .number-plus::before, .number-counter .number-plus::after, .number-counter .number-minus::before, .number-counter .number-minus::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 2px;
+      width: 10px;
+      height: 2px; }
+    .number-counter .number-plus::after, .number-counter .number-minus::after {
+      top: 2px;
+      left: 6px;
+      width: 2px;
+      height: 10px; }
+    .number-counter .number-plus:hover::before, .number-counter .number-plus:hover::after, .number-counter .number-minus:hover::before, .number-counter .number-minus:hover::after {
+      background: white; }
+  .number-counter .number-minus::after {
+    display: none; }
+
+.input-number-required .number-counter,
+.input-number-label-required .number-counter {
+  display: inline-block;
+  position: relative;
+  align-self: center;
+  height: 18px;
+  padding-left: 6px; }
+  .input-number-required .number-counter .number-plus, .input-number-required .number-counter .number-minus,
+  .input-number-label-required .number-counter .number-plus,
+  .input-number-label-required .number-counter .number-minus {
+    display: inline-block;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    margin: 0 0 0 6px;
+    border-radius: 50%;
+    text-indent: -9999px;
+    cursor: pointer;
+    border: 2px solid #ce5050;
+    color: #ce5050; }
+    .input-number-required .number-counter .number-plus::before, .input-number-required .number-counter .number-plus::after, .input-number-required .number-counter .number-minus::before, .input-number-required .number-counter .number-minus::after,
+    .input-number-label-required .number-counter .number-plus::before,
+    .input-number-label-required .number-counter .number-plus::after,
+    .input-number-label-required .number-counter .number-minus::before,
+    .input-number-label-required .number-counter .number-minus::after {
+      background: #ce5050; }
+    .input-number-required .number-counter .number-plus:hover, .input-number-required .number-counter .number-minus:hover,
+    .input-number-label-required .number-counter .number-plus:hover,
+    .input-number-label-required .number-counter .number-minus:hover {
+      background: #ce5050; }
+    .input-number-required .number-counter .number-plus::before, .input-number-required .number-counter .number-plus::after, .input-number-required .number-counter .number-minus::before, .input-number-required .number-counter .number-minus::after,
+    .input-number-label-required .number-counter .number-plus::before,
+    .input-number-label-required .number-counter .number-plus::after,
+    .input-number-label-required .number-counter .number-minus::before,
+    .input-number-label-required .number-counter .number-minus::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 2px;
+      width: 10px;
+      height: 2px; }
+    .input-number-required .number-counter .number-plus::after, .input-number-required .number-counter .number-minus::after,
+    .input-number-label-required .number-counter .number-plus::after,
+    .input-number-label-required .number-counter .number-minus::after {
+      top: 2px;
+      left: 6px;
+      width: 2px;
+      height: 10px; }
+    .input-number-required .number-counter .number-plus:hover::before, .input-number-required .number-counter .number-plus:hover::after, .input-number-required .number-counter .number-minus:hover::before, .input-number-required .number-counter .number-minus:hover::after,
+    .input-number-label-required .number-counter .number-plus:hover::before,
+    .input-number-label-required .number-counter .number-plus:hover::after,
+    .input-number-label-required .number-counter .number-minus:hover::before,
+    .input-number-label-required .number-counter .number-minus:hover::after {
+      background: white; }
+  .input-number-required .number-counter .number-minus::after,
+  .input-number-label-required .number-counter .number-minus::after {
+    display: none; }
