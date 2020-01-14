@@ -46,15 +46,15 @@ class MainPage extends Component {
 
           <Parallax
               blur={0}
-              bgImage={('/static/banner/bg9.1.jpg')}
+              bgImage={('/static/banner/bg12.jpg')}
               // bgImage={('/static/banner/bg5.5.jpg')}
               bgImageAlt="the cat"
-              strength={200}
+              strength={50}
               renderLayer={percentage => (
                   <div
                       style={{
                           position: 'absolute',
-                          background: `rgba(4, 69, 125, 0.57)`,
+                          background: `rgba(4, 69, 125, 0.5)`,
                           left: '20%',
                           top: '27%',
                           width: '60%',
@@ -63,9 +63,9 @@ class MainPage extends Component {
                           padding: '10px'
                       }}
                   >
-                      <div style={{fontSize:'23px',marginTop: '45px', color:'#fff', textAlign: 'center'}}>Explore the world
+                      <div style={{fontSize:'27px',marginTop: '45px', fontStyle: 'italic', color:'#fff', textAlign: 'center'}}>Explore the world
                             <div>of</div>
-                            <div style={{fontSize:'55px', fontStyle: 'italic' }}>Switzerland</div>
+                            <div style={{fontSize:'62px' }}>Switzerland</div>
                       </div>
                       {/*<h3 style={{color:'#fff', textAlign: 'center'}}>of</h3>*/}
                       {/*<h1 style={{color:'#fff', textAlign: 'center'}}>Switzerland</h1>*/}
