@@ -75,15 +75,12 @@ const MenuLinks = props => {
 
 	return (
 		<Fragment>
-			{links &&
-				links.map((item, idx) => {
-					return (
-						<li key={idx}>
+			{links && links.map((item, idx) => {
+					return (<li key={idx}>
 							<Link href={item.url}>
 								<a>{item.title}</a>
 							</Link>
-						</li>
-					);
+						</li>);
 				})}
 			<li>
 				<Link href="/contacts"><a>Contacts</a></Link>
@@ -102,7 +99,8 @@ const Logo = () => {
 	return (
 		<Link href="/">
 			<a className="brand-logo left">
-				{packageJson.name}
+				<img src={'/logo.svg'}/>
+				<span>{packageJson.name}</span>
 			</a>
 		</Link>
 	);

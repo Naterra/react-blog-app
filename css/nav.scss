@@ -1,0 +1,35 @@
+nav {
+  &.top-navbar {}
+
+  .nav-wrapper {
+    i {
+      line-height: inherit;
+    }
+  }
+
+  .brand-logo {
+    display: flex;
+
+    img {
+      height: 45px;
+      margin-top: 8px;
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+  .navbar .dropdown-menu {
+    position: relative !important;
+    display: block !important;
+    transform: none !important;
+    padding: 0 0 10px 0;
+    border: none;
+  }
+}
+
+@media only screen and (min-width: 601px){
+  nav .brand-logo{
+    img{ margin-top: 8px; height: 50px; }
+  }
+}

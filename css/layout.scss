@@ -47,9 +47,14 @@ footer {
   }
 }
 
+main.adminPage{
+  display: flex;
+
+}
+
 .admin-left-sidebar{
   background: #597f92;
-  height: calc(100vh - 137px);
+  //height: calc(100vh - 137px);
   padding: 0;
   margin-bottom: -20px;
 

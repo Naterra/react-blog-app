@@ -6,6 +6,7 @@ $ionicons-version: '3.0.0-alpha.3' !default;
 
 
 @import 'layout';
+@import 'nav';
 @import 'stick-social-icons';
 @import 'sidenav';
 @import 'form';
@@ -33,7 +34,7 @@ $color-light-blue: #5c8fad;
 
 
 .bubble-layout{
-	background: url('/static/images/bg-bubbles.svg');
+	background: url('/public/images/bg-bubbles.svg');
 	//background-size: 1155px auto;
 	//background-position: center 445px;
 	background-position: top;
@@ -220,7 +221,7 @@ ul#mapTool{
 .user-avatar-block {
 	.user-avatar-bigImg {
 		position: relative;
-		background: url('/static/images/profile_background.png');
+		background: url('/public/images/profile_background.png');
 		height: 85px;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -270,16 +271,6 @@ ul#mapTool{
 
 
 
-.navbar,
-.navbar .btn,
-.navbar .dropdown-item,
-.navbar button {
-	font-size: 18px;
-}
-
-.navbar {
-	border-bottom: 1px solid #ddd;
-}
 
 
 @media (max-width: 768px) {
@@ -308,25 +299,6 @@ ul#mapTool{
 	}
 }
 
-/**
- * This is a fix for Reactstrap 5.0.0-alpha.4 not displaying menus in the 
- * navbar correcrtly on mobile devices.
- **/
-.navbar .dropdown {
-	display: block;
-}
-
-
-
-@media (max-width: 768px) {
-	.navbar .dropdown-menu {
-		position: relative !important;
-		display: block !important;
-		transform: none !important;
-		padding: 0 0 10px 0;
-		border: none;
-	}
-}
 
 
 .with-sidebar {
@@ -334,35 +306,6 @@ ul#mapTool{
 }
 
 
-
-nav {
-	&.top-navbar {
-		&.front-page {
-			background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 95%);
-			position: absolute;
-			box-shadow: none;
-			line-height: 40px;
-			z-index: 99999;
-
-			.navbar-links {
-				text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
-			}
-		}
-
-		.navbar-links {
-			text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
-			li a{
-				//color:#fff;
-			}
-		}
-	}
-
-	.nav-wrapper {
-		i {
-			line-height: inherit;
-		}
-	}
-}
 
 .banner {
 	width: 100%;
@@ -430,21 +373,7 @@ nav {
 	}
 }
 
-/******************** brand-logo ******************/
-.brand-logo {
-	img {
-		height: 45px;
-		margin-top: 8px;
-	}
-}
 
-@media only screen and (min-width: 601px){
-	nav .brand-logo{
-		img{ margin-top: 8px; height: 50px; }
-	}
-}
-
-/******************** brand-logo end ******************/
 
 
 
@@ -468,11 +397,3 @@ nav {
 	}
 }
 
-//.reviews{
-//	.review-item{
-//		border-bottom:1px solid #eee;
-//	}
-//	.review-item:last-child{
-//		border:none;
-//	}
-//}
