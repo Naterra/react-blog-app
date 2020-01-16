@@ -60,8 +60,10 @@ export class MainBody extends React.Component {
 		const fixedCClass = fixedContainer && !container ? 'fixed_container':'';
 
 		return (
-			<main className={`${pageClass}`}>
-				<div className={`${containerClass} ${fixedCClass} `}>{this.props.children}</div>
+			<main className={`${containerClass} ${fixedCClass} ${pageClass} row `}>
+				{/*<div className={`${containerClass} ${fixedCClass}  `}>*/}
+					{this.props.children}
+				{/*</div>*/}
 			</main>
 		);
 	}

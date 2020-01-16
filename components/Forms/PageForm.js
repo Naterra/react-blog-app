@@ -12,7 +12,9 @@ import FileUploadButton from './reduxFields/FileUploadButton/FileUploadButton';
 import InputCheckbox from './reduxFields/Checkbox/Checkbox';
 
 
-const CKEditor = dynamic(() => import('./reduxFields/CKEditor/CKEditor&Base64Uploader.js'), {
+
+
+const CKEditor = dynamic(() => import('./reduxFields/CKEditor/CKEditor.js'), {
 	ssr: false
 });
 
@@ -94,6 +96,11 @@ class PageForm extends React.Component {
 		this.props.change('deleteFiles', deleteFilesArr);
 	};
 
+	onImageRemovedEvent=(img)=>{
+		console.log('onImageRemovedEvent', img);
+		this.deleteFile(img);
+	};
+
 	render() {
 		const { handleSubmit, mode, formValues } = this.props;
 		const { error } = this.state;
@@ -105,8 +112,8 @@ class PageForm extends React.Component {
 								{error.length > 0 && (
 									<div className="row">
 										{error.length > 0 &&
-											error.map(item => {
-												return <div className="red-text">{item}</div>;
+											error.map((item, i) => {
+												return <div key={i} className="red-text">{item}</div>;
 											})}
 									</div>
 								)}
@@ -121,7 +128,8 @@ class PageForm extends React.Component {
 									<Field name="description"
 										   component={CKEditor}
 										   counter="true"
-										   onChange={e=>{console.log('changed')}}
+										   onImageRemovedEvent={this.onImageRemovedEvent}
+										   // onChange={e=>{console.log('changed', e)}}
 										   label="Description" placeholder="Description here ..."
 										   value={formValues.description}
 									/>

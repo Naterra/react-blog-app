@@ -8,10 +8,6 @@ import Layout from './Layout';
 
 class UserProfileLayout extends React.Component {
 	static async getInitialProps({ req, res }) {
-		// if (req && !req.user) {
-		// 	console.error('PrivatePage:: INIT:', req.user);
-		// 	res.redirect('/auth');
-		// }
 
 		//Redirect to Admin Page
 		if (req && req.user) {
