@@ -41,8 +41,7 @@ class MainPage extends Component {
 
     return (
       <Layout meta={meta} pageClass="mainPage" frontPage={true} container={false} {...this.props} >
-          {/*<Parallax image="/static/banner/parallaxBanner.jpg" {...this.props} />*/}
-          {/*<Parallax image="/static/banner/bg5.5.jpg" {...this.props} />*/}
+        
 
           <Parallax
               blur={0}
