@@ -16,7 +16,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
-// import FileRepository from '@ckeditor/ckeditor5-upload/src/filerepository';
+
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 
@@ -47,16 +47,77 @@ import TableToolbar from "@ckeditor/ckeditor5-table/src/tabletoolbar";
 import TextTransformation from "@ckeditor/ckeditor5-typing/src/texttransformation";
 import Indent from "@ckeditor/ckeditor5-indent/src/indent";
 import IndentBlock from "@ckeditor/ckeditor5-indent/src/indentblock";
+import FileRepository from '@ckeditor/ckeditor5-upload/src/filerepository';
 
 
-
-const loadPlugins = [ Essentials, Paragraph, Bold, Italic, Heading, Indent, IndentBlock, Underline, Strikethrough, BlockQuote, Font, Alignment, List, Link, MediaEmbed, PasteFromOffice, Image, ImageStyle, ImageToolbar, ImageUpload, ImageResize, Base64UploadAdapter, Table, TableToolbar, TextTransformation ];
+const loadPlugins = [FileRepository, Essentials, Paragraph, Bold, Italic, Heading, Indent, IndentBlock, Underline, Strikethrough, BlockQuote, Font, Alignment, List, Link, MediaEmbed, PasteFromOffice, Image, ImageStyle, ImageToolbar, ImageUpload, ImageResize, Table, TableToolbar, TextTransformation ];
 
 class CKEditorWrapper extends Component{
+	constructor(){
+		super();
+		this.state={
+			images:[]
+		}
+	}
+	componentDidMount() {
+		const {   input: { value, onChange }  } = this.props;
+		if(value != ''){
+			const imagesArr = this.getImagesFromText(value);
+			this.setState({images:imagesArr});
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		const {   input: { value, onChange }  } = this.props;
+		const { images } = this.state;
+		// console.error('CDU', this.props);
+		// console.error('CDU prevProps', prevProps);
+
+		// When Text Loaded
+		if(prevProps.input.value =='' && value.length>0 && images.length<=0){
+			// console.error('Loaded and no images');
+			const imagesArr = this.getImagesFromText(value);
+			this.setState({images:imagesArr});
+		}
+	}
+
+	getImagesFromText=(text)=>{
+		const imagesArr = Array.from( new DOMParser().parseFromString( text, 'text/html' )
+			.querySelectorAll( 'img' ) )
+			.map( img => img.getAttribute( 'src' ) );
+		return imagesArr;
+	};
+
+	getRemovedImage=(text)=>{
+		const { images } = this.state;
+		const textImagesArr = this.getImagesFromText(text);
+		const initialImages = images;
+
+
+
+		let removedImg = null;
+		for(let img of initialImages ){
+			if(!textImagesArr.includes(img)){
+				removedImg = img;
+			}
+		}
+		return removedImg;
+	};
+
+	removeFromServer=(imgSrc)=>{
+		const {   onImageRemovedEvent  } = this.props;
+		// console.log('removeFromServer', this.props);
+
+		// Must be processed from paren Form component
+		if(onImageRemovedEvent){
+			onImageRemovedEvent(imgSrc);
+		}
+	};
 
     render() {
 		const {   input: { value, onChange }, meta: { touched, error, warning } } = this.props;
-
+		const { images } = this.state;
+		// console.log('initialImages', images);
 
 		return (
 			<Fragment>
@@ -64,23 +125,40 @@ class CKEditorWrapper extends Component{
 					editor={ClassicEditor}
 					data={value}
 					onChange={(event, editor) => {
+
+						//If Image removed event
+						const changes = event.source.differ.getChanges();
+						const removedImageEvent = changes.find(item=>item.type == 'remove' && item.name == 'image');
+						if(removedImageEvent){
+							// console.log('onChange::IMAGE removed', removedImageEvent);
+							// const modelElement = removedImageEvent.position.nodeAfter;
+
+							// TODO: remove from server or use something like ckfinder
+							const rImg = this.getRemovedImage(editor.getData());
+							this.removeFromServer(rImg);
+							console.log('removedImg', rImg);
+						}
+
+
 						let data = editor.getData();
 						onChange(data);
 					}}
+
 					onInit={editor => {
-						// console.error("CKEditorWrapper::onInit", this);
+						console.error("CKEditorWrapper::onInit", editor);
 
 						editor.plugins.get('FileRepository').createUploadAdapter = loader => {
+							console.error("createUploadAdapter");
 							return new UploadAdapter(loader);
 						};
 					}}
+
 					config={{
 						plugins:loadPlugins,
 						toolbar: [  "heading", "|", "bold", "italic", "underline", "strikethrough", "|", "fontSize", "fontColor",	"fontBackgroundColor", "|", "alignment", "outdent",	"indent", "bulletedList", "numberedList", "blockQuote",	"|", "link", "insertTable",	"imageUpload", "mediaEmbed", "|", "undo", "redo"],
 						image: {
 							resizeUnit: "px",
-							toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:full', 'imageStyle:alignRight', 'imageStyle:center-thumb-200', 'imageStyle:center-thumb-150'
-							],
+							toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:full', 'imageStyle:alignRight'	],
 							styles: [
 								'full',
 								'side',
@@ -106,6 +184,8 @@ class UploadAdapter {
 	}
 
 	upload() {
+		console.error('Adapt:upload', this.loader.file);
+
 		return this.loader.file.then(uploadedFile => {
 			return new Promise((resolve, reject) => {
 				const data = new FormData();
