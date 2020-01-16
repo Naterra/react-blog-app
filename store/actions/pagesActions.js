@@ -40,11 +40,12 @@ export const savePage = (param)=> dispatch =>{
 
 
     const data = new FormData();
+    if(param.deleteFiles) delete param.deleteFiles;
     for(let k of Object.keys(param)) {
         data.append(`${k}`, param[k]);
     }
 
-    // if(deleteFiles) data.append('deleteFiles', JSON.stringify(deleteFiles));
+    if(deleteFiles) data.append('deleteFiles', JSON.stringify(deleteFiles));
     // if(upload_file){
     //     if(upload_file['image']) data.append('new_image', upload_file['image'][0]);
     // }

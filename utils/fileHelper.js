@@ -91,35 +91,89 @@ const getFileExt=(mimetype)=>{
     return 'jpg';
 };
 
-const download = (param, options={}) => {
-    const { file, folder } =param;
-    // const { keepOriginalName=false } = options;
-    const folderPathArr = folder.split('/');
-    console.log('>> download >> ', folderPathArr);
-    console.log('>> options >> ', options);
+const _calcFilePath =(filePath)=>{
+    const substr ='uploads/';
 
+    //remove / on beginig of path
+    if(filePath[0]=='/') filePath = filePath.substring(1);
 
-    // Create a flder paths
-    let pathStr = root_path+'/static/uploads/';
-    for(let path of folderPathArr){
-        if(path !==''){
-            pathStr +=path+'/';
+    // calc shift and new path
+    const idxOf = filePath.indexOf(substr);
+    let shift = idxOf >=0 ? substr.length + idxOf : 0;
+    let pathOfFile = filePath.substring(shift);
+    let pathToUploadFile =  root_path+'/public/uploads/'+pathOfFile;
+    return pathToUploadFile;
+};
 
-            // Make dir if not exist
-            if (!fs.existsSync(pathStr)) fs.mkdirSync(pathStr);
-            // console.log('_ path', path);
-            // console.log('_ pathStr', pathStr);
-        }
+/**
+ * Creates folders by provided filePath
+ * > path must contain 'public/uploads' to be valid
+ * > creates folders only under 'public'
+ * @param filePath (str) folder path
+ * @private
+ */
+const _createFoldersIfNotExist =(filePath)=>{
+    // Create system filders if not exists
+    if (!fs.existsSync(root_path+"/public")) fs.mkdirSync(root_path+"/public");
+    if (!fs.existsSync(root_path+"/public/uploads")) fs.mkdirSync(root_path+"/public/uploads");
+
+    // Remove root path from filePath
+    let idxOf = filePath.indexOf(root_path);
+    if(idxOf >=0){
+        let shift = root_path.length + idxOf;
+        filePath = filePath.substring(shift);
     }
 
-    let filename=   options.keepOriginalName ? file.name : `${Date.now()}.${getFileExt(file.mimetype)}` ;
+
+    // contain 'public/uploads' ?
+    // Remove public/uploads from filePath
+    const uploadPath = 'public/uploads/';
+     let idxOfSubpath = filePath.indexOf(uploadPath);
+     if(idxOfSubpath >=0){
+         shift = uploadPath.length + idxOfSubpath;
+         filePath = filePath.substring(shift);
+     }
 
 
 
+    let folderPathArr = filePath.split('/');
+    // console.log('_createFoldersIfNotExist ___folderPathArr', { root_path, folderPathArr, idxOfSubpath  });
+
+    let sysPath = root_path+'/'+uploadPath;
+
+    for(let path of folderPathArr){
+        if(path !==''){
+            sysPath +=path+'/';
+
+            // Make dir if not exist
+            if (!fs.existsSync(sysPath)){
+                console.log('>> NEW FOLDER path', sysPath);
+                fs.mkdirSync(sysPath);
+            }
+        }
+    }
+};
+
+const download = (param, options={}) => {
+    const { file, folder } =param;
+
+    let filename =  options.keepOriginalName ? file.name : `${Date.now()}.${getFileExt(file.mimetype)}` ;
+
+    // Calc filePath path under root path
+   const filePath = _calcFilePath(folder);
+
+    // Make folders if not exists
+    _createFoldersIfNotExist(filePath);
+
+    //Calc App public folder path
+   let appFolderPath = filePath.replace(root_path, '');
+   appFolderPath = appFolderPath.replace('public/', '');
+
+    // console.log('>> filePath >> ', {filePath, appFolderPath});
 
     return new Promise(resolve=>{
         // Use the mv() method to place the file somewhere on your server
-        file.mv(pathStr+'/'+filename , (err, data) =>{
+        file.mv(`${filePath}/${filename}` , (err, data) =>{
             if (err){
                 // console.log('writeFile err', err);
                 reject({
@@ -132,7 +186,7 @@ const download = (param, options={}) => {
                 // console.log('writeFile data', data);
                 resolve({
                     "uploaded": true,
-                    "filePath": `/static/uploads${folder}/${filename}`
+                    "filePath": `${appFolderPath}/${filename}`
                 });
             }
         });
@@ -141,7 +195,7 @@ const download = (param, options={}) => {
 
 
 const deleteFile = (filePath)=>{
-    let substr ='static/uploads/';
+    let substr ='public/uploads/';
     let substrLength = substr.length;
     let shift = substrLength + filePath.indexOf(substr);
 
@@ -152,7 +206,7 @@ const deleteFile = (filePath)=>{
         if( typeof(filePath) != 'string') return reject({error:'filePath is not a string', path:filePath});
 
         let pathOfFile = filePath.substring(shift);
-        let pathToDeleteFile =  root_path+'/static/uploads/'+pathOfFile;
+        let pathToDeleteFile =  root_path+'/public/uploads/'+pathOfFile;
         console.log("___pathToDeleteFile", pathToDeleteFile);
 
         fs.unlink(pathToDeleteFile, (err, res)=>{
@@ -216,7 +270,7 @@ const deleteFolderRecursivelly =(folderPath)=>{
     let newFPath = folderPath.substring(shift);
 
     // Remove Set folder
-    let folder= `${root_path}/static/uploads/${newFPath}`;
+    let folder= `${root_path}/public/uploads/${newFPath}`;
     // console.log("___RM "+folder);
 
     return rimraf.sync(folder);

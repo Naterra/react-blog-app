@@ -13,7 +13,9 @@ db.setUpConnection();
 const fileHelper = require('../../utils/fileHelper');
 
 router.post("/imageFromEditor", async (req, res, next) => {
-    let { filePath  } = req.body;
+    let { filep  } = req.body;
+    console.log('imageFromEditor:: file', req.files.file);
+
 
     if(!req.files) return res.send(500, { error: "Файл не найден" });
     let file = req.files.file;
@@ -26,27 +28,19 @@ router.post("/imageFromEditor", async (req, res, next) => {
     return res.send(result);
 });
 
-// router.post("/deleteFile", async (req, res, next) => {
-    // let { filePath  } = req.body;
-    //
-    // let substr ='static/uploads/';
-    // let substrLength = substr.length;
-    // let shift = substrLength + filePath.indexOf(substr);
-    //
-    // if(!filePath.includes(substr)){
-    //     return res.send(500, {error:'Wrong file path'});
-    // }
-    //
-    // let pathOfFile = filePath.substring(shift);
-    // let pathToDeleteFile =  root_path+'/static/uploads/'+pathOfFile;
-    // console.log("___pathToDeleteFile", pathToDeleteFile);
-    //
-    //
-    // fs.unlink(pathToDeleteFile, (err, res)=>{
-    //     if(err) return res.send(500, {error:err});
-    //     return res.send({success:true});
-    // });
-// });
+router.post("/deleteFile", async (req, res, next) => {
+    let { filePath  } = req.body;
+
+    if(!filePath || filePath.length<=5) res.status(500).send({error:'filePath error'});
+
+    let result = await fileHelper.deleteFile(filePath)
+        .then(res=>{
+            return res.status(200).send({status:'success'});
+        }).catch(err=>{
+            return res.status(500).send({status:'error', err});
+        });
+    console.log("__ delete res", result);
+});
 
 
 

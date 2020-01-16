@@ -69,7 +69,6 @@ router.get("/:id", async (req, res) => {
 
 
     Page.findOne({_id: id})
-        .populate('collections', '_id title')
         .exec(async (err, data) => {
             if (err) {
                 console.log('err', err);
@@ -84,9 +83,9 @@ router.get("/:id", async (req, res) => {
 
 // Create/Update Record
 router.post("/", async (req, res, next) => {
-    console.log(">>> POST /Page", req.body );
-    let { _id,   title, description, showOnMenu, showOnFront  } = req.body;
-
+    // console.log(">>> POST /Page", req.body );
+    let { _id,   title, description, showOnMenu, showOnFront, deleteFiles  } = req.body;
+    console.log(">>> POST /Page",  {_id, title, deleteFiles }) ;
 
 
     // Required fields
@@ -94,24 +93,33 @@ router.post("/", async (req, res, next) => {
 
 
     let newData = {
+        _id,
         title,
         description,
         showOnMenu: showOnMenu !=null ? showOnMenu : false,
         showOnFront: showOnFront !=null ? showOnFront : false
     };
 
-    let pageRecord = _id ? await Page.findOne({_id}) : await new Page(newData).save();
-    console.log(">>>> pageRecord", pageRecord);
+    if(!_id){
+        newData._id = new mongoose.mongo.ObjectId();
+    }
+
+    // Delete Files on Server
+    if(deleteFiles){
+        deleteFiles = JSON.parse(deleteFiles);
+        for(let filePath of deleteFiles){
+            fileHelper.deleteFile(filePath);
+        }
+    }
 
 
 
-    // Update
-    pageRecord.update(newData,  (err, doc)=>{
+    Page.findOneAndUpdate({_id:newData._id}, newData, {new: true, upsert: true},  (err, doc)=>{
         if (err) {
-            console.log("POST /page err", err );
-            return res.send(500, { error: err });
+            console.log('POST err', err);
+            return res.status(500).send({ error: err });
         }else{
-            return res.send(doc);
+            return res.status(200).send(doc);
         }
     });
 });
@@ -119,20 +127,19 @@ router.post("/", async (req, res, next) => {
 
 // Delete record
 router.delete("/:id", async (req, res, next) => {
-    console.log('>>> DELETE Page', req.params );
     let { id } = req.params;
+    if(!id) return res.status(500).send( { error: 'id is required' });
 
     // Remove Page folder
-    let pageFolder= `/static/uploads/pages/${id}`;
+    let pageFolder= `/public/uploads/pages/${id}`;
     fileHelper.deleteFolderRecursivelly(pageFolder);
 
 
 
     Page.findOneAndRemove({ _id: id },(err, rec)=>{
-         if (err) return res.send(500, { error: err });
-         return res.send({
-             status:"Success",
-             removerCollections:removeReq.deletedCount
+         if (err) return res.status(500).send({ error: err });
+         return res.status(200).send({
+             status:"Success"
          });
     });
 });
