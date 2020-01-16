@@ -9,7 +9,7 @@ if(!user) return false;
         return(<div className="user-avatar-block">
             <div className="user-avatar-wrapper" >
                 <div className="user-avatar-img" >
-                    <img className="responsive-img circle " src="../static/images/user_avatar_default.png"/>
+                    <img className="responsive-img circle " src="/images/user_avatar_default.png"/>
                 </div>
                 <div className="user-name">{user.name || "User"}</div>
             </div>

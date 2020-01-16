@@ -5,8 +5,8 @@ import { withRouter } from 'next/router';
 
 /**  Components  **/
 import Layout from '../components/layouts/Layout'
-import RecordsListWithPaging from "../components/RecordsListWithPaging";
-import RecordPreview from "../components/Sets/RecordPreview";
+// import RecordsListWithPaging from "../components/RecordsListWithPaging";
+// import RecordPreview from "../components/Sets/RecordPreview";
 
 /**  Actions  **/
 import { getPage  } from '../store/actions';

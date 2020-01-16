@@ -64,7 +64,7 @@ nextApp
 
 		expressApp.get('/robots.txt',  (req, res) => {
 			res.status(200).sendFile('robots.txt', {
-				root: __dirname + '/static/',
+				root: __dirname + '/public/',
 				headers: { 'Content-Type': 'text/plain;charset=UTF-8' }
 			});
 		});

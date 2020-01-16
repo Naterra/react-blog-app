@@ -67,8 +67,6 @@ class MainPage extends Component {
                             <div>of</div>
                             <div style={{fontSize:'62px' }}>Switzerland</div>
                       </div>
-                      {/*<h3 style={{color:'#fff', textAlign: 'center'}}>of</h3>*/}
-                      {/*<h1 style={{color:'#fff', textAlign: 'center'}}>Switzerland</h1>*/}
                   </div>
               )}
           >
@@ -78,7 +76,6 @@ class MainPage extends Component {
           </Parallax>
 
           <div className="container">
-              hello
               {record && <div className="row description ckEditorContent" dangerouslySetInnerHTML={{ __html: record.description }} />}
           </div>
 

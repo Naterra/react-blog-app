@@ -7,7 +7,7 @@ const UsersList = props => {
 	const recordsList = () => {
 
 		return records.map((item, i) => {
-			const userImg =  "/static/images/avatar-no-image.png";
+			const userImg =  "/images/avatar-no-image.png";
 
 			return (
 				<li key={i} className="collection-item row valign-wrapper ">

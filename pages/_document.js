@@ -13,7 +13,7 @@ export default class extends Document {
     return (
       <html lang='en'>
         <Head>
-            <link rel="shortcut icon" type="image/x-icon"   href="/static/favicon.ico"/>
+            <link rel="shortcut icon" type="image/x-icon"   href="/favicon.ico"/>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />

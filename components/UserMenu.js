@@ -22,7 +22,7 @@ class UserMenu extends React.Component {
 
 	render() {
 		const { session } = this.props;
-		const userImg = session.user.image ? session.user.image : '/static/images/avatar-no-image.png';
+		const userImg = session.user.image ? session.user.image : '/images/avatar-no-image.png';
 
 		const triggerIcon = (
 			<div className="nav-avatar-dropdown-trigger">

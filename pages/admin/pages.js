@@ -9,8 +9,6 @@ import AdminPageLayout from '../../components/layouts/AdminPageLayout';
 import PrivatePage from '../../components/PrivatePage';
 import PageForm from '../../components/Forms/PageForm';
 import RecordsListWithPaging from '../../components/RecordsListWithPaging';
-import Tabs from '../../components/Materialize/Tabs/Tabs';
-import CollectionsView from '../../components/admin/Collections/CollectionsView';
 
 /** Actions **/
 import { getPages  } from '../../store/actions';

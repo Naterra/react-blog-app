@@ -12,9 +12,6 @@ export default class LeftSidebar extends React.Component {
                              <Link href="/admin"><a><i className="material-icons">dashboard</i><span className="title">Dashboard</span></a></Link>
                          </li>
                          <li>
-                             <Link href="/admin/sets"><a><i className="material-icons">chevron_right</i><span className="title">Sets</span></a></Link>
-                         </li>
-                         <li>
                              <Link href="/admin/pages"><a><i className="material-icons">chevron_right</i><span className="title">Pages</span></a></Link>
                          </li>
                          <li>
