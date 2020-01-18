@@ -17,8 +17,9 @@ export default (props)=>{
 
 
         <style jsx>{`
-            .breadcrumb{
+            a.breadcrumb{
                 font-size: 13px;
+                vertical-align: middle;
             }
 			.breadcrumb:before {
                 color: #7e827e;
