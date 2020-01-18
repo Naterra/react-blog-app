@@ -6,12 +6,14 @@ figure.image {
 
   img {
     width: inherit;
+    max-width: 100%;
   }
 
   //Centered img
   &.image-style-align-center {
     text-align: center;
     margin: auto;
+    width: 80%;
   }
 
   //IMG: align left
