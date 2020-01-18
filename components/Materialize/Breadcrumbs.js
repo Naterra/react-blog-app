@@ -7,11 +7,11 @@ import Link from 'next/link';
  * @returns {*}
  */
 export default (props)=>{
-    const { data } = props;
+    const { links } = props;
 
-    return(<div className="breadcrumbs col s12 ">
+    return(<div className="breadcrumbs col s12 " style={{margin:'0', padding:'0'}}>
         <a href='/'><i className="material-icons" style={{color:'#7e827e', verticalAlign: 'sub', fontSize: '16px'}}>home</i></a>
-        { data &&  data.map((el, i)=> (<a key={i}  href={el.link} className="breadcrumb ">
+        { links &&  links.map((el, i)=> (<a key={i}  href={el.link} className="breadcrumb ">
                  {el.title}
             </a>))}
 
