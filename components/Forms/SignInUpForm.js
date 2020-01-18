@@ -23,54 +23,49 @@ class SignInUpForm extends React.Component {
 		};
 	}
 
-
-
-	signInEvent = (values) =>{
-		this.props.signIn({
-			email:values.email,
-			password:values.password
-		})
+	signInEvent = values => {
+		this.props
+			.signIn({
+				email: values.email,
+				password: values.password
+			})
 			.then(res => {
-				console.log('res', res);
-				if(res.data.success == true){
-					this.setState({ success: res.data.message });
-					if(res.data.user && res.data.user.admin){
+				if (res.data.success == true) {
+					if (res.data.user && res.data.user.admin) {
 						Router.push('/admin');
-					}else{
+					} else {
 						Router.push('/account');
 					}
 				}
 			})
 			.catch(err => {
 				const errMsq = err && err.response ? err.response.data.message : false;
-				this.setState({error: errMsq});
+				this.setState({ error: errMsq });
 			});
-
-
 	};
 
-	signUpEvent = (values) =>{
-		// console.error(' Submit', values);
+	signUpEvent = values => {
 
-		this.props.signUp(values)
-			.then(res=>{
-				this.setState({ success: res.data, error:false });
+		this.props
+			.signUp(values)
+			.then(res => {
+				this.setState({ success: res.data, error: false });
 			})
-			.catch(err=>{
+			.catch(err => {
 				// console.error('>>>signUp CATCH  catch', err.response);
-				const messages = err.response && err.response.data.errors ?  err.response.data.errors : false;
+				const messages = err.response && err.response.data.errors ? err.response.data.errors : false;
 
 				//If array of errors
-				if(messages[0]) {
-					const errArr = messages.map(i=>i.message);
-					this.setState({ error: errArr.join(".") });
-				}else{
+				if (messages[0]) {
+					const errArr = messages.map(i => i.message);
+					this.setState({ error: errArr.join('.') });
+				} else {
 					this.setState({ error: messages.message });
 				}
 			});
 	};
 
-	signInForm = () =>{
+	signInForm = () => {
 		const { handleSubmit } = this.props;
 
 		return (
@@ -85,7 +80,7 @@ class SignInUpForm extends React.Component {
 		);
 	};
 
-	signUpForm = ()=>{
+	signUpForm = () => {
 		const {} = this.state;
 		const { handleSubmit } = this.props;
 
@@ -95,7 +90,6 @@ class SignInUpForm extends React.Component {
 				<Field name="email" label="Email" component={inputFieldTempl} placeholder="name@example.com" />
 				<Field name="password" label="Password" type="password" component={inputFieldTempl} />
 
-
 				<button className="btn" type="submit">
 					Save
 				</button>
@@ -103,11 +97,11 @@ class SignInUpForm extends React.Component {
 		);
 	};
 
-	tabChanged =(e)=>{
+	tabChanged = e => {
 		const formId = e.target.id;
-		if(formId==0){
+		if (formId == 0) {
 			this.props.change('mode', 'sign-in');
-		}else{
+		} else {
 			this.props.change('mode', 'sign-up');
 		}
 	};
@@ -118,7 +112,7 @@ class SignInUpForm extends React.Component {
 
 		return (
 			<div className="row" style={{ marginTop: '15px' }}>
-				{error && (<p className="red-text center">{error}</p>)}
+				{error && <p className="red-text center">{error}</p>}
 				{success && (
 					<div>
 						<h5 className="green-text center">{success.message}</h5>
@@ -126,15 +120,11 @@ class SignInUpForm extends React.Component {
 				)}
 
 				{!success && (
-					<Tabs
-						id={tabId}
-						menuList={['Sign In', 'Sign Up']}
-						tabChangedCallback={this.tabChanged}
-					>
-						<div id={`tab-${tabId}-1`}  className="col s12">
+					<Tabs id={tabId} menuList={['Sign In', 'Sign Up']} tabChangedCallback={this.tabChanged}>
+						<div id={`tab-${tabId}-1`} className="col s12">
 							{this.signInForm()}
 						</div>
-						<div id={`tab-${tabId}-2`}  className="col s12">
+						<div id={`tab-${tabId}-2`} className="col s12">
 							{this.signUpForm()}
 						</div>
 					</Tabs>
@@ -144,12 +134,10 @@ class SignInUpForm extends React.Component {
 	}
 }
 
-
-
-const validate = (values) =>{
+const validate = values => {
 	const errors = {};
 
-	if (!values.email) errors['email'] = "Required field";
+	if (!values.email) errors['email'] = 'Required field';
 	if (!values.password) errors['password'] = 'Required field';
 
 	if (values.mode == 'sign-up') {
@@ -157,12 +145,11 @@ const validate = (values) =>{
 	}
 
 	// Validation
-	if (values.email && is_email_valid(values.email) !== true) errors["email"] = "Wrong format";
-	if (values.password && values.password.length<3) errors["password"] = "Must contain at least 6 letters ";
+	if (values.email && is_email_valid(values.email) !== true) errors['email'] = 'Wrong format';
+	if (values.password && values.password.length < 3) errors['password'] = 'Must contain at least 6 letters ';
 
 	return errors;
 };
-
 
 /** Redux-Form wrapper **/
 SignInUpForm = reduxForm({
@@ -172,7 +159,7 @@ SignInUpForm = reduxForm({
 
 function mapStateToProps(state, ownProps, ownState) {
 	let initialValues = {
-		mode:"sing-in"
+		mode: 'sing-in'
 	};
 
 	const formValues = getFormValues('SignInUpForm')(state) || {};
