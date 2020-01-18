@@ -31,9 +31,14 @@ class SignInUpForm extends React.Component {
 			password:values.password
 		})
 			.then(res => {
+				console.log('res', res);
 				if(res.data.success == true){
 					this.setState({ success: res.data.message });
-					Router.push('/account');
+					if(res.data.user && res.data.user.admin){
+						Router.push('/admin');
+					}else{
+						Router.push('/account');
+					}
 				}
 			})
 			.catch(err => {
