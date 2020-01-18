@@ -4,6 +4,7 @@ import PreloaderSpinner from './Materialize/PreloaderSpinner';
 
 /**
  * A list of records with paging
+ * @param limit - # of records per page
  * @param ElComponent - react component for rendering list item element
  * @param getRecordsFn - FN to fetch records
  * @param queryParam - Query {} for DB ex: {location:{state, city},  sort:"photos_local"}
@@ -17,7 +18,7 @@ class RecordsListWithPaging extends React.Component {
 		this.state = {
 			records: [],
 			page: 1,
-			limit: 20,
+			limit: props.limit || 20,
 			loading: false
 		};
 		this.getRecords = this.getRecords.bind(this);
