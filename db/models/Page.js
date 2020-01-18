@@ -4,7 +4,7 @@ const _ModelIncrement = require("./ModelIncrement");
 
 const PageSchema = new Schema({
     id: { type: Number ,  default: 0},
-    title: { type: String , index: { unique: true }},
+    title: { type: String },
     description: { type: String },
     image: { type: String },
     showOnMenu: { type: Boolean, default: false },
@@ -18,8 +18,6 @@ PageSchema.pre('save', async function(next) {
 
     if (this.isNew) {
         const id = await _ModelIncrement.getNextId('Page');
-        // console.log('> new id', id);
-
         this.id = id; // Incremented
         next();
     } else {
