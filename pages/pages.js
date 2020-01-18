@@ -34,28 +34,29 @@ class PagesPage extends Component {
 	}
 
 	render() {
-		console.log('PAGE', this.props);
 		const { router } = this.props;
 		const { record } = this.state;
 		const pageId = router.query.id || false;
 		let meta = { title: 'Pages', description: '' };
 
-		if (pageId) {
-			return <PageView record={record} {...this.props} />;
-		}
+		// Single Page
+		if (pageId) return <PageView record={record} {...this.props} />;
 
+
+		// List of Records
 		return (
 			<Layout meta={meta} container={true} fixedContainer={false} {...this.props}>
 				{!pageId && (
 					<div className="row">
 						<h1>Articles</h1>
-						<RecordsListWithPaging ElComponent={PagePreview} limit={10} queryParam={{}} getRecordsFn={this.props.getPages} />
+						<RecordsListWithPaging ElComponent={PagePreview} limit={10} queryParam={false} getRecordsFn={this.props.getPages} />
 					</div>
 				)}
 			</Layout>
 		);
 	}
 }
+
 
 const PageView = props => {
 	const { record } = props;
