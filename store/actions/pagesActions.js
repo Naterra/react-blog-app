@@ -29,6 +29,17 @@ export const getPage = (id, loadToStore = false) => dispatch => {
 		.catch(err => Promise.reject(err.response));
 };
 
+export const getPageById = (id) => dispatch => {
+	if (!id) throw new Error('getPageById fn: missed required field =>ID ');
+
+	return axios
+		.get(`/api/pages/getPageById/` + id)
+		.then(res => res.data)
+		.catch(err => Promise.reject(err.response));
+};
+
+
+
 // Create/Update Page
 export const savePage = param => dispatch => {
 	console.warn('savePage', param);

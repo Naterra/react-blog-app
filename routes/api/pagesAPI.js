@@ -64,6 +64,24 @@ router.get('/:id', async (req, res) => {
 	});
 });
 
+// Single Page By Incremented Id
+router.get('/getPageById/:id', async (req, res) => {
+	let { id } = req.params;
+	console.log('>>> GET Page', req.params);
+
+	Page.findOne({ id }).exec(async (err, data) => {
+		if (err) {
+			console.log('err', err);
+			return res.status(500).json(err);
+		} else {
+			return res.status(200).send(data);
+		}
+	});
+});
+
+
+
+
 // Create/Update Record
 router.post('/', async (req, res, next) => {
 	// console.log(">>> POST /Page", req.body );
