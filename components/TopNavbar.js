@@ -83,6 +83,9 @@ const MenuLinks = props => {
 						</li>);
 				})}
 			<li>
+				<Link href="/pages"><a>Posts</a></Link>
+			</li>
+			<li>
 				<Link href="/contacts"><a>Contacts</a></Link>
 			</li>
 		</Fragment>

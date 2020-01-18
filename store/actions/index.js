@@ -1,4 +1,3 @@
-export * from "./collectionsActions";
 export * from "./userActions";
 export * from "./settingsActions";
 export * from "./setsActions";

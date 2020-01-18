@@ -46,9 +46,9 @@ export const savePage = (param)=> dispatch =>{
     }
 
     if(deleteFiles) data.append('deleteFiles', JSON.stringify(deleteFiles));
-    // if(upload_file){
-    //     if(upload_file['image']) data.append('new_image', upload_file['image'][0]);
-    // }
+    if(upload_file){
+        if(upload_file['image']) data.append('new_image', upload_file['image'][0]);
+    }
 
 
     const conf = {

@@ -45,7 +45,10 @@ $color-light-blue: #5c8fad;
 .account-page{
 	background-color: #f5f5f5;
 }
-.mcard{
+
+
+
+.flat-card{
 	background: #fff;
 	padding: 5px;
 	margin: 10px 0;
@@ -59,7 +62,7 @@ $color-light-blue: #5c8fad;
 		margin-top: 5px;
 		margin-left: 10px;
 	}
-	.mcard-title{
+	.card-title{
 		color: #68829a;
 		font-size: 17px;
 	}

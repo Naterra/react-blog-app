@@ -62,6 +62,7 @@ router.post('/sign-up', (req, res, next) => {
 });
 
 router.post('/sign-in', (req, res, next) => {
+	// console.log('>> POST sign-in', req.user);
 	if (req.user) {
 		return res.status(200).json({
 			success: true,
@@ -71,9 +72,8 @@ router.post('/sign-in', (req, res, next) => {
 	}
 
 	return passport.authenticate('local.signin', (err, userData, token) => {
+		// console.log('authenticate', {err, userData, token});
 		if (err) {
-
-
 			if (err.name === 'IncorrectCredentialsError') {
 				return res.status(400).json({
 					success: false,
