@@ -109,7 +109,15 @@ class PageForm extends Component {
 						<div className="col s12">
 							<Field name="title" disabled={mode == 'view' ? true : false} component={inputFieldTempl} label="title" placeholder="Заголовок" />
 							<ImageUpload {...this.props} label="Main Image" deleteImageFile={this.deleteImageFile} />
-							<Field name="description" component={CKEditor} counter="true" onImageRemovedEvent={this.onImageRemovedEvent} label="Description" placeholder="Description here ..." value={formValues.description} />
+							<Field
+								name="description"
+								component={CKEditor}
+								counter="true"
+								onImageRemovedEvent={this.onImageRemovedEvent}
+								label="Description"
+								placeholder="Description here ..."
+								value={formValues.description}
+							/>
 
 							<Field name="showOnMenu" component={InputCheckbox} label="show On Menu" />
 							<Field name="showOnFront" component={InputCheckbox} label="show On Front page" />

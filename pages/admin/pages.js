@@ -13,6 +13,9 @@ import RecordsListWithPaging from '../../components/RecordsListWithPaging';
 /** Actions **/
 import { getPages  } from '../../store/actions';
 
+/** HOC **/
+// import recordsListPageHOC from '../../components/HOC/RecordsListPage';
+
 
 class PagesPage extends PrivatePage{
     constructor(props){

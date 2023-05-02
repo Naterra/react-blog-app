@@ -25,5 +25,16 @@ PageSchema.pre('save', async function(next) {
     }
 });
 
+// CollectionSchema.pre('findOneAndUpdate', async function(next) {
+//     console.log('>>> PRE findOneAndUpdate collection', this._update);
+//     // this._update.password = 'BBB'
+//     // next();
+//     //
+//     // if (!this._update.id || (this._update.id == this._update._id)) {
+//     //     const id = await _ModelIncrement.getNextId('Collection');
+//     //     this._update.id = id; // Incremented
+//     //     next();
+//     // }
+// });
 
 module.exports =  mongoose.model("Page", PageSchema);

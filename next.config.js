@@ -3,7 +3,7 @@ const withCSS = require('@zeit/next-css');
 const withPlugins = require('next-compose-plugins');
 const { styles } = require("@ckeditor/ckeditor5-dev-utils");
 
-module.exports =  {
+module.exports = withSass({
     webpack: (config, { dev }) => {
         config.node = {
             console: true,
@@ -12,26 +12,12 @@ module.exports =  {
             tls: "empty"
         };
 
-        config.module.rules.push(
-            {
-                test: /\.(css|scss)/,
-                loader: 'emit-file-loader',
-                exclude: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css/,
-                options: {
-                    name: 'dist/[path][name].[ext]'
-                }
-            },
-            {
-                test: /\.scss$/,
-                loader: 'babel-loader!raw-loader!sass-loader'
-            },
-            {
-                test: /\.(otf|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-                exclude: /ckeditor5-[^/]+\/theme\/icons\/.+\.svg$/,
-                loaders: ["url-loader"],
-            },
 
-        );
+        config.module.rules.push({
+            test: /\.(jpe?g|png|gif|ico|webp|otf|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+            exclude: /ckeditor5-[^/]+\/theme\/icons\/.+\.svg$/,
+            loaders: ["url-loader"],
+        });
 
 
         //  ckeditor svg
@@ -64,6 +50,4 @@ module.exports =  {
 
         return config;
     }
-};
-
-
+});

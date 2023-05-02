@@ -59,6 +59,8 @@ const httpServer = require('http').Server(expressApp);
 nextApp
 	.prepare()
 	.then(() => {
+		expressApp.use('/', express.static('public'));
+
 		// Serve fonts from ionicon npm module
 		expressApp.use('/fonts/ionicons', express.static('./node_modules/ionicons/dist/fonts'));
 

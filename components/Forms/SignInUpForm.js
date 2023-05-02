@@ -39,7 +39,7 @@ class SignInUpForm extends React.Component {
 				}
 			})
 			.catch(err => {
-				const errMsq = err && err.response ? err.response.data.message : false;
+				const errMsq = err && err.response ? err.response.data.message : 'Server Error';
 				this.setState({ error: errMsq });
 			});
 	};
